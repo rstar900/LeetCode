@@ -1,39 +1,18 @@
 class Solution {
-
-private:
-    
-    // function to delete element at the given position
-    void deleteElement(vector<int>& nums, int pos, int length) {
-        
-        // if it is the last element, no need to do anything as it can be overwritten
-        if (pos == length-1)
-            return;
-      
-        // otherwise, shift elements to their left towards the deleted position.
-        else {
-            for (int i = pos+1; i < length; i++) {
-                nums[i-1] = nums[i];
-            }
-        }
-        
-    }
     
 public:
     int removeElement(vector<int>& nums, int val) {
         
-        int length = nums.size();
+        int length = 0;
         int i = 0;
         
-        while (i < length) {
+        while (i < nums.size()) {
             
-            // if val is found at position i, delete it and decrement length otherwise increment i
-            if (nums[i] == val) {
-                deleteElement(nums, i, length--);
-                
-            } else {
-                i++;
-            }
+            // only if the number at ith position is not val, we put it in the output array and increase length
+            if (nums[i] != val) 
+                nums[length++] = nums[i];
             
+            i++;
         }
         
         return length;
